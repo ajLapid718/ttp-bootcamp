@@ -1,0 +1,78 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 80%;
+  margin: auto;
+  padding: 50px 0 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#buttonArea {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  border-color: black;
+  width: 200px;
+  height: 50px;
+}
+
+.btns__text {
+  display: flex;
+}
+
+.btn__text {
+  width: 200px;
+  height: 50px;
+  border-color: black;
+  text-align: center;
+}
+
+#hoverArea {
+  border: 1px solid black;
+  width: 800px;
+  height: 400px;
+}
+
+#hoverArea h1 {
+  line-height: 400px;
+  text-align: center;
+}
+
+.form {
+  margin: 50px 0 50px 0;
+  padding: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.form__row {
+  width: 100%;
+}
+
+#sphereForm {
+  margin: 50px 0 50px 0;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  margin-top: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
