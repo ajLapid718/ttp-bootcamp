@@ -30,14 +30,16 @@
     document
       .getElementById("im-right-btn")
       .addEventListener("click", function(event) {
-        document.getElementById("im-right-text").innerHTML = "I'm right";
+        document.getElementById("im-right-text").innerHTML = `"I'm right!"`;
         document.getElementById("no-im-right-text").innerHTML = "";
       });
 
     document
       .getElementById("no-im-right-btn")
       .addEventListener("click", function(event) {
-        document.getElementById("no-im-right-text").innerHTML = "No, I'm right";
+        document.getElementById(
+          "no-im-right-text"
+        ).innerHTML = `"No, I'm right!"`;
         document.getElementById("im-right-text").innerHTML = "";
       });
   </script>
