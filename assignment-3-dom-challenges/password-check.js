@@ -31,9 +31,3 @@ form__submit.addEventListener("click", function(event) {
     alert("Password is NOT correct!");
   }
 });
-
-<<<<<<< HEAD
-let test;
-=======
-let test = 41;
->>>>>>> hw3-separate-files
