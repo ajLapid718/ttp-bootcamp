@@ -31,5 +31,3 @@ form__submit.addEventListener("click", function(event) {
     alert("Password is NOT correct!");
   }
 });
-
-let test;
