@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<HTML>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="dom-challenges.css" />
+  </head>
+
+  <body>
+    <!---Resolves problem #2: Area to hover over-->
+    <div id="hoverArea" style="color: red;">
+      <h1>Don't hover over me</h1>
+    </div>
+  </body>
+
+  <script>
+    document
+      .getElementById("hoverArea")
+      .addEventListener("mouseover", function(event) {
+        alert("Hey, I told you not to hover over me");
+      });
+  </script>
+</HTML>

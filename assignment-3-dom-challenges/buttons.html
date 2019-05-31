@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<HTML>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="dom-challenges.css" />
+  </head>
+
+  <body>
+    <!---Resolves problem #1: Buttons that argue with each other-->
+    <div id="buttonArea">
+      <div class="btns__buttons">
+        <button id="im-right-btn" class="btn">I'm Right</button>
+        <button id="no-im-right-btn" class="btn">No, I'm Right</button>
+      </div>
+
+      <div class="btns__text">
+        <div id="im-right-text" class="btn__text"></div>
+        <div id="no-im-right-text" class="btn__text"></div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    document
+      .getElementById("im-right-btn")
+      .addEventListener("click", function(event) {
+        document.getElementById("im-right-text").innerHTML = "I'm right";
+        document.getElementById("no-im-right-text").innerHTML = "";
+      });
+
+    document
+      .getElementById("no-im-right-btn")
+      .addEventListener("click", function(event) {
+        document.getElementById("no-im-right-text").innerHTML = "No, I'm right";
+        document.getElementById("im-right-text").innerHTML = "";
+      });
+  </script>
+</HTML>

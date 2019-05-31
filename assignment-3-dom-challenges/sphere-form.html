@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<HTML>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="dom-challenges.css" />
+  </head>
+
+  <body>
+    <!---Resolves problem #6: Create a form to use calculate a sphere's volume-->
+    <div id="sphereForm" class="form">
+      <span class="form__row row">
+        <label for="sphere__form__radius" class="col">Sphere Radius</label>
+        <input
+          type="number"
+          id="sphere__form__radius"
+          name="sphere__form__radius"
+          class="col"
+          placeholder="Enter Radius"
+        />
+      </span>
+      <span class="form__row row">
+        <input
+          type="submit"
+          id="sphere__form__submit"
+          class="col"
+          value="Submit Now!"
+        />
+      </span>
+    </div>
+
+    <div id="sphere__form__answer">
+      <h1 id="sphere__form__answer__h1"></h1>
+    </div>
+  </body>
+
+  <script>
+    let sphere__form__radius = document.getElementById("sphere__form__radius");
+
+    sphere__form__submit.addEventListener("click", function(event) {
+      let sphere__volume = 0;
+      if (sphere__form__radius) {
+        sphere__volume =
+          (4 / 3) * Math.PI * Math.pow(sphere__form__radius.value, 3);
+      }
+
+      document.getElementById("sphere__form__answer__h1").innerHTML =
+        sphere__volume + " units<sup>3</sup>";
+    });
+  </script>
+</HTML>
