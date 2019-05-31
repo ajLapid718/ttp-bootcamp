@@ -32,4 +32,8 @@ form__submit.addEventListener("click", function(event) {
   }
 });
 
+<<<<<<< HEAD
 let test;
+=======
+let test = 41;
+>>>>>>> hw3-separate-files
