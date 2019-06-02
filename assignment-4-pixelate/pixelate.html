@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<HTML>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="pixelate.css" />
+  </head>
+
+  <body>
+    <div id="pixelate">
+      <div id="title">
+        <h1>Pixelate</h1>
+      </div>
+      <div class="buttons buttonsTop">
+        <span
+          >Rows
+          <text id="rowCounter"></text>
+          <button id="addRow">+</button><button id="remRow">-</button></span
+        >
+        <span
+          >Columns
+          <text id="colCounter"></text>
+          <button id="addCol">+</button><button id="remCol">-</button></span
+        >
+        <span
+          >Colors
+          <select id="color">
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="red">Red</option>
+            <option value="yellow">Yellow</option>
+            <option value="purple">Purple</option>
+          </select></span
+        >
+      </div>
+      <table id="table">
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div class="buttons">
+        <button id="fillAllCells">Fill All Cells</button>
+        <button id="fillEmptyCells">Fill Empty Cells</button>
+        <button id="clearCells">Clear</button>
+      </div>
+    </div>
+  </body>
+
+  <script src="pixelate.js"></script>
+</HTML>

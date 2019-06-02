@@ -1,0 +1,53 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#pixelate {
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
+.buttonsTop {
+  width: 400px;
+  padding-right: 100px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.buttonsTop span {
+  margin: 5px 0 5px 0;
+}
+
+.buttonsTop text {
+  margin-right: 5px;
+}
+
+.buttonsTop button {
+  width: 50px;
+  height: 50px;
+}
+
+#table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 25px;
+}
+
+table td {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid black;
+}
