@@ -30,13 +30,13 @@ class Form extends Component {
         <form>
           <input
             type="text"
-            name="tempFirstName"
+            name="firstName"
             placeholder="First Name"
             onChange={this.handleChange}
           />
           <input
             type="text"
-            name="tempLastName"
+            name="lastName"
             placeholder="Last Name"
             onChange={this.handleChange}
           />
@@ -59,15 +59,17 @@ class Form extends Component {
     e.preventDefault();
     this.setState({
       showForm: false,
-      firstName: this.state.tempFirstName,
-      lastName: this.state.tempLastName
+      tempFirstName: this.state.firstName,
+      tempLastName: this.state.lastName
     });
   };
 
   handleCancel = e => {
     e.preventDefault();
     this.setState({
-      showForm: false
+      showForm: false,
+      firstName: this.state.tempFirstName,
+      lastName: this.state.tempLastName
     });
   };
 

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ContactCard extends Component {
   constructor(props) {
@@ -18,14 +18,14 @@ class ContactCard extends Component {
         <div>Phone Number: {this.props.phoneNumber}</div>
         <div>Email: {this.props.email}</div>
       </div>
-    );
+    )
   }
 }
 
 ContactCard.propTypes = {
   name: PropTypes.string.isRequired,
-  phoneNumber: PropTypes.string.isRequired,
+  phoneNumber: PropTypes.number.isRequired,
   email: PropTypes.string.isRequired
-};
+}
 
 export default ContactCard;

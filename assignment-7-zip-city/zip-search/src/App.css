@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+}
+
+.searchHeader {
+          background-color: #222;
+          color: white;
+          font-size: 1.25rem;
+          font-weight: 800;
+          margin: 0;
+          padding: 1rem;
+}
+
+.form{
+     display: inline-block;
+}
+
+.cityCard{
+    position: relative;
+    background-color: #ccdfff;
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+    vertical-align: middle;
+    max-width: 400px;
+    display: inline-block;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.cityName{
+     border-bottom: 1px solid #000;
+}
