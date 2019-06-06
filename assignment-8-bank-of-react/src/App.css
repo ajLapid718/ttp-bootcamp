@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+.debits,
+.credits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.debit,
+.credit {
+  border-radius: 20px;
+  border: 1px solid black;
+  text-align: center;
+  position: relative;
+  margin: 5px;
+  width: 300px;
+}
+
+.debitsForm,
+.creditsForm {
+  width: 500px;
+  margin: auto;
+}
+
+.links {
+}
