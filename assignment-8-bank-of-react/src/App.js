@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
 import UserProfile from "./components/UserProfile";
 import LogIn from "./components/LogIn";
+import Debits from "./components/Debits";
+import Credits from "./components/Credits";
 
 class App extends Component {
   constructor() {
@@ -40,13 +43,21 @@ class App extends Component {
         {...this.props}
       />
     );
+    const DebitsComponent = () => (
+      <Debits accountBalance={this.state.accountBalance} />
+    );
+    const CreditsComponent = () => (
+      <Credits accountBalance={this.state.accountBalance} />
+    );
 
     return (
       <Router>
-        <div>
+        <div className="App">
           <Route exact path="/" render={HomeComponent} />
           <Route exact path="/userProfile" render={UserProfileComponent} />
           <Route exact path="/login" render={LogInComponent} />
+          <Route exact path="/debits" render={DebitsComponent} />
+          <Route exact path="/credits" render={CreditsComponent} />
         </div>
       </Router>
     );
