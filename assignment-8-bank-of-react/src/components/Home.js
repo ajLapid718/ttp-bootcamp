@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import AccountBalance from "./AccountBalance";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
@@ -25,3 +30,7 @@ class Home extends Component {
 }
 
 export default Home;
+
+Home.propTypes = {
+  accountBalance: PropTypes.number.isRequired
+};

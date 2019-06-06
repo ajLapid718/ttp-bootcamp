@@ -17,18 +17,14 @@ export default class Debits extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      debits: [],
-      debitTotal: 0,
+      debits: this.props.debits,
+      debitTotal: this.props.debitTotal,
       accountBalance: this.props.accountBalance,
       debitsFormDescription: "",
       debitsFormAmount: 0,
       debitsFormDate: new Date().toISOString()
     };
   }
-
-  componentDidMount = () => {
-    this.fetchDebits();
-  };
 
   handleChange = e => {
     this.setState({
@@ -47,21 +43,6 @@ export default class Debits extends Component {
       debitTotal: prevState.debitTotal + newDebit.amount,
       accountBalance: prevState.accountBalance - newDebit.amount
     }));
-  };
-
-  fetchDebits = async () => {
-    try {
-      let res = await axios.get(`https://moj-api.herokuapp.com/debits`);
-      for (let index in res.data) {
-        console.log(res.data[index]);
-        this.setState(prevState => ({
-          debits: [...prevState.debits, res.data[index]],
-          debitTotal: prevState.debitTotal + res.data[index].amount
-        }));
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   displayDebits = () => {
@@ -128,5 +109,7 @@ export default class Debits extends Component {
 }
 
 Debits.propTypes = {
-  accountBalance: PropTypes.number.isRequired
+  accountBalance: PropTypes.number.isRequired,
+  debits: PropTypes.array.isRequired,
+  debitTotal: PropTypes.number.isRequired
 };
