@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+# presentation file
+presentation-101/
+
+# school manager project. for now
+school-manager/
