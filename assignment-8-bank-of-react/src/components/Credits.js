@@ -17,18 +17,14 @@ export default class Credits extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      credits: [],
-      creditTotal: 0,
+      credits: this.props.credits,
+      creditTotal: this.props.creditTotal,
       accountBalance: this.props.accountBalance,
       creditsFormDescription: "",
       creditsFormAmount: 0,
       creditsFormDate: new Date().toISOString()
     };
   }
-
-  componentDidMount = () => {
-    this.fetchCredits();
-  };
 
   handleChange = e => {
     this.setState({
@@ -47,21 +43,6 @@ export default class Credits extends Component {
       creditTotal: prevState.creditTotal + newCredit.amount,
       accountBalance: prevState.accountBalance + newCredit.amount
     }));
-  };
-
-  fetchCredits = async () => {
-    try {
-      let res = await axios.get(`https://moj-api.herokuapp.com/credits`);
-      for (let index in res.data) {
-        console.log(res.data[index]);
-        this.setState(prevState => ({
-          credits: [...prevState.credits, res.data[index]],
-          creditTotal: prevState.creditTotal + res.data[index].amount
-        }));
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   displayCredits = () => {
@@ -128,5 +109,7 @@ export default class Credits extends Component {
 }
 
 Credits.propTypes = {
-  accountBalance: PropTypes.number.isRequired
+  accountBalance: PropTypes.number.isRequired,
+  credits: PropTypes.array.isRequired,
+  creditTotal: PropTypes.number.isRequired
 };
