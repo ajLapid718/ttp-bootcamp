@@ -44,7 +44,7 @@ export default class Debits extends Component {
     };
     this.setState(prevState => ({
       debits: [...prevState.debits, newDebit],
-      debitTotal: prevState.debitTotal - newDebit.amount,
+      debitTotal: prevState.debitTotal + newDebit.amount,
       accountBalance: prevState.accountBalance - newDebit.amount
     }));
   };
