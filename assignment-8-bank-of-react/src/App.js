@@ -52,10 +52,6 @@ class App extends Component {
           accountBalance: prevState.accountBalance - curDebit.amount
         }));
       }
-      this.setState({
-        debits: this.state.debits,
-        debitTotal: this.state.debitTotal
-      });
     } catch (err) {
       console.log(err);
     }
@@ -82,10 +78,6 @@ class App extends Component {
           accountBalance: prevState.accountBalance + curCredit.amount
         }));
       }
-      this.setState({
-        credits: this.state.credits,
-        creditTotal: this.state.creditTotal
-      });
     } catch (err) {
       console.log(err);
     }
