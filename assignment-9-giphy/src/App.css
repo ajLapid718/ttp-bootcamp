@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.searchForm {
+  width: 500px;
+  margin: auto;
+}
+
+.searchForm input {
+  text-align: center;
+}
+
+.gifs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.gif {
+  margin: 25px;
+}
+
+.inputRegularSearch {
+  background-color: #f5f5f5;
+}
+
+.btnRegularSearch {
+  background-color: lightgreen;
+}
+
+.btnRandomSearch {
+  background-color: lightcoral;
+}
