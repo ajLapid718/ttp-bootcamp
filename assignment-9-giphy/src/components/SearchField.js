@@ -37,7 +37,7 @@ export default class SearchField extends Component {
     this.fetchRegularData();
   };
 
-  // Upon submit, fetches the data for those search terms
+  // Upon submit, fetches the data for a random GIF
   handleRandomSubmit = e => {
     e.preventDefault();
     this.fetchRandomData();
