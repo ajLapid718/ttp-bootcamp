@@ -51,11 +51,6 @@ export default class Debits extends Component {
       date: this.state.debitsFormDate
     };
     this.sendData(newDebit);
-    // this.setState(prevState => ({
-    //   debits: [...prevState.debits, newDebit],
-    //   debitTotal: prevState.debitTotal + newDebit.amount,
-    //   accountBalance: prevState.accountBalance - newDebit.amount
-    // }));
   };
 
   // Sends the data back to App.js
