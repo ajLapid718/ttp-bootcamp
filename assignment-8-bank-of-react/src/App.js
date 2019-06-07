@@ -8,59 +8,112 @@ import LogIn from "./components/LogIn";
 import Debits from "./components/Debits";
 import Credits from "./components/Credits";
 
+const initialState = {
+  accountBalance: 0,
+  debits: [],
+  debitTotal: 0,
+  credits: [],
+  creditTotal: 0,
+  currentUser: {
+    userName: "bob_loblaw",
+    memberSince: "08/23/99"
+  }
+};
+
 class App extends Component {
   constructor() {
     super();
-
-    this.state = {
-      accountBalance: 0,
-      debits: [],
-      debitTotal: 0,
-      credits: [],
-      creditTotal: 0,
-      currentUser: {
-        userName: "bob_loblaw",
-        memberSince: "08/23/99"
-      }
-    };
+    this.state = initialState;
   }
 
+  componentDidMount = async () => {
+    await this.fetchDebits();
+    await this.fetchCredits();
+  };
+
+  // GET requests the API for debit transactions. Calls updateDebits().
   fetchDebits = async () => {
     try {
       let res = await axios.get(`https://moj-api.herokuapp.com/debits`);
-      for (let index in res.data) {
-        let curDebit = res.data[index];
+      this.updateDebits(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Maps through each debit transaction and adds it to the array state.debits, while appropriately modifying state.accountBalance and state.debitTotal.
+  updateDebits = async input => {
+    try {
+      for (let index in input) {
+        let curDebit = input[index];
         this.setState(prevState => ({
           debits: [...prevState.debits, curDebit],
           debitTotal: prevState.debitTotal + curDebit.amount,
           accountBalance: prevState.accountBalance - curDebit.amount
         }));
       }
+      this.setState({
+        debits: this.state.debits,
+        debitTotal: this.state.debitTotal
+      });
     } catch (err) {
       console.log(err);
     }
-    return Promise.resolve("ok");
   };
 
+  // GET requests the API for credit transactions. Calls updateCredits().
   fetchCredits = async () => {
     try {
       let res = await axios.get(`https://moj-api.herokuapp.com/credits`);
-      for (let index in res.data) {
-        let curCredit = res.data[index];
+      this.updateCredits(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Maps through each credit transaction and adds it to the array state.credits, while appropriately modifying state.accountBalance and state.creditTotal.
+  updateCredits = async input => {
+    try {
+      for (let index in input) {
+        let curCredit = input[index];
         this.setState(prevState => ({
           credits: [...prevState.credits, curCredit],
           creditTotal: prevState.creditTotal + curCredit.amount,
           accountBalance: prevState.accountBalance + curCredit.amount
         }));
       }
+      this.setState({
+        credits: this.state.credits,
+        creditTotal: this.state.creditTotal
+      });
     } catch (err) {
       console.log(err);
     }
-    return Promise.resolve("ok");
   };
 
-  componentDidMount = () => {
-    return Promise.all([this.fetchDebits(), this.fetchCredits()]);
+  // Grabs debit data from Debit component and modifies App's state accordingly
+  setDebitData = input => {
+    this.setState(prevState => ({
+      debits: [...prevState.debits, input],
+      debitTotal: prevState.debitTotal + input.amount
+    }));
+    this.calculateBalance();
+  };
+
+  // Grabs credit data from Credit component and modifies App's state accordingly
+  setCreditData = input => {
+    this.setState(prevState => ({
+      credits: [...prevState.credits, input],
+      creditTotal: prevState.creditTotal + input.amount
+    }));
+    this.calculateBalance();
+  };
+
+  // Calculates the account balance based on the credit and debit transactions
+  calculateBalance = () => {
+    this.setState(prevState => ({
+      accountBalance: prevState.creditTotal - prevState.debitTotal
+    }));
   };
 
   mockLogIn = logInInfo => {
@@ -71,7 +124,11 @@ class App extends Component {
 
   render() {
     const HomeComponent = () => (
-      <Home accountBalance={this.state.accountBalance} />
+      <Home
+        accountBalance={this.state.accountBalance}
+        debitTotal={this.state.debitTotal}
+        creditTotal={this.state.creditTotal}
+      />
     );
     const UserProfileComponent = () => (
       <UserProfile
@@ -91,6 +148,7 @@ class App extends Component {
         accountBalance={this.state.accountBalance}
         debits={this.state.debits}
         debitTotal={this.state.debitTotal}
+        onDataFetched={this.setDebitData}
       />
     );
     const CreditsComponent = () => (
@@ -98,6 +156,7 @@ class App extends Component {
         accountBalance={this.state.accountBalance}
         credits={this.state.credits}
         creditTotal={this.state.creditTotal}
+        onDataFetched={this.setCreditData}
       />
     );
 

@@ -26,25 +26,44 @@ export default class Debits extends Component {
     };
   }
 
+  // When this component receives new data from the App component, the data from the new props will modify this component's state accordingly
+  componentWillReceiveProps = async nextProps => {
+    this.setState({
+      accountBalance: nextProps.accountBalance,
+      debits: nextProps.debits,
+      debitTotal: nextProps.debitTotal
+    });
+  };
+
+  // Updates debitsFormDescription, debitFormsAmount, debitFormsDate on change
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
+  // Upon submit, adds the new debit transaction to state.debits and appropriately modifies  state.accountBalance and state.debitTotal.
   handleSubmit = e => {
+    e.preventDefault();
     let newDebit = {
       description: this.state.debitsFormDescription,
       amount: parseFloat(this.state.debitsFormAmount),
       date: this.state.debitsFormDate
     };
-    this.setState(prevState => ({
-      debits: [...prevState.debits, newDebit],
-      debitTotal: prevState.debitTotal + newDebit.amount,
-      accountBalance: prevState.accountBalance - newDebit.amount
-    }));
+    this.sendData(newDebit);
+    // this.setState(prevState => ({
+    //   debits: [...prevState.debits, newDebit],
+    //   debitTotal: prevState.debitTotal + newDebit.amount,
+    //   accountBalance: prevState.accountBalance - newDebit.amount
+    // }));
   };
 
+  // Sends the data back to App.js
+  sendData = async input => {
+    await this.props.onDataFetched(input);
+  };
+
+  // Displays the debit transactions
   displayDebits = () => {
     return (
       <div className="debits">

@@ -26,25 +26,44 @@ export default class Credits extends Component {
     };
   }
 
+  // When this component receives new data from the App component, the data from the new props will modify this component's state accordingly
+  componentWillReceiveProps = async nextProps => {
+    this.setState({
+      accountBalance: nextProps.accountBalance,
+      credits: nextProps.credits,
+      creditTotal: nextProps.creditTotal
+    });
+  };
+
+  // Updates creditsFormDescription, creditFormsAmount, creditFormsDate on change
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
+  // Upon submit, adds the new credit transaction to state.credits and appropriately modifies  state.accountBalance and state.creditTotal.
   handleSubmit = e => {
+    e.preventDefault();
     let newCredit = {
       description: this.state.creditsFormDescription,
       amount: parseFloat(this.state.creditsFormAmount),
       date: this.state.creditsFormDate
     };
-    this.setState(prevState => ({
-      credits: [...prevState.credits, newCredit],
-      creditTotal: prevState.creditTotal + newCredit.amount,
-      accountBalance: prevState.accountBalance + newCredit.amount
-    }));
+    this.sendData(newCredit);
+    // this.setState(prevState => ({
+    //   credits: [...prevState.credits, newCredit],
+    //   creditTotal: prevState.creditTotal + newCredit.amount,
+    //   accountBalance: prevState.accountBalance - newCredit.amount
+    // }));
   };
 
+  // Sends the data back to App.js
+  sendData = async input => {
+    await this.props.onDataFetched(input);
+  };
+
+  // Displays the credit transactions
   displayCredits = () => {
     return (
       <div className="credits">
